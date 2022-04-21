@@ -12,7 +12,7 @@ int main() // управляющая конструкция (заголовок функции main)
 
     cout << A << "," << B << "," << C << endl;
     A = B + C;
-    cout <<"A = B + C, A = " << A << endl;
+    cout << "A = B + C, A = " << A << endl;
 
     Complex M = B - C;
     cout << "M = B - C, M = " << M << endl;
@@ -21,8 +21,8 @@ int main() // управляющая конструкция (заголовок функции main)
 
     Complex D;
     cout << "Enter complex number D = ";
-    cin >> D;
 
+    cin >> D;
     A += C + D;
     cout << "D = " << D << "\nA = " << A << endl;
 

@@ -5,7 +5,7 @@
 using namespace std;
 
 //-------------------------------------------
-Complex::Complex(double aRe  , double   aIm)
+Complex::Complex(double aRe, double aIm)
 {
     //консруктор класса Complex
 
@@ -32,7 +32,7 @@ Complex::~Complex()
 }
 
 //-------------------------------------------
-void Complex::Set(double aRe,double aIm)
+void Complex::Set(double aRe, double aIm)
 {
     //сеттер, устанавливает комплексное число
 
@@ -60,7 +60,7 @@ double Complex::abs()
 }
 
 //-------------------------------------------
-Complex Complex::operator+ (const Complex & aRval)
+Complex Complex::operator+ (const Complex& aRval)
 {
     //определение оператора сложения комплексных чисел
     //возвращает Complex
@@ -74,7 +74,7 @@ Complex Complex::operator+ (const Complex & aRval)
 }
 
 //-------------------------------------------
-  Complex Complex::operator- (const Complex & aRval)
+  Complex Complex::operator- (const Complex& aRval)
 {
     //определение оператора вычитания комплексных чисел
     //возвращает Complex
@@ -117,7 +117,7 @@ Complex Complex::operator- (const  double& aRval)
 }
 
 //-------------------------------------------
-Complex Complex::operator* ( const Complex& aRval)
+Complex Complex::operator* (const Complex& aRval)
 {
     //определение оператора умножения комплексных чисел
     //возвращает Complex
@@ -170,7 +170,7 @@ Complex& Complex::operator+= (const Complex& arval)
     Re += arval.Re;
     Im += arval.Im;
 
-    return * this;
+    return *this;
 }
 
 //-------------------------------------------
@@ -275,27 +275,27 @@ Complex& Complex::operator= (const double& aRval)
 }
 
 //-------------------------------------------
-istream& operator>> (istream& stream, Complex& a)
+istream& operator>> (istream& stream, Complex& aRval)
 {
     //определение потока ввода
 
     char tmp[256];
 
-    stream >> a.Re >> a.Im >> tmp;
+    stream >> aRval.Re >> aRval.Im >> tmp;
 
     return stream;
 }
 
 //-------------------------------------------
-ostream& operator<< (ostream& stream, Complex& a)
+ostream& operator<< (ostream& stream, Complex& aRval)
 {
     //определение потока вывода
-    stream << a.Re;
+    stream << aRval.Re;
 
-    if(!(a.Im < 0))
+    if(!(aRval.Im < 0))
         stream << '+';
 
-    stream << a.Im << 'i';
+    stream << aRval.Im << 'i';
 
     return stream;
 }
@@ -306,37 +306,37 @@ Complex operator+ (const double& aLval, const Complex& aRval)
     //определяет сложение вещественного числа с комплексным
     //возвращает Complex
 
-    Complex Result;
+    Complex result;
 
-    Result.Re = aLval + aRval.Re;
-    Result.Im = aRval.Im;
+    result.Re = aLval + aRval.Re;
+    result.Im = aRval.Im;
 
-    return Result;
+    return result;
 }
 
 //-------------------------------------------
-Complex operator-(const double &aLval, const Complex&aRval)
+Complex operator-(const double &aLval, const Complex& aRval)
 {
     //определяет вычитание из вещественного числа комплексного
     //возвращает Complex
 
-    Complex Result;
-    Result.Re = aLval - aRval.Re;
-    Result.Im = -aRval.Im;
+    Complex result;
+    result.Re = aLval - aRval.Re;
+    result.Im = -aRval.Im;
 
-    return Result;
+    return result;
 }
 
 //-------------------------------------------
-Complex operator* (const double& aLval, const Complex& a)
+Complex operator* (const double& aLval, const Complex& aRval)
 {
     //определяет умнодение вещественного числа на комплексное
     //возвращает Complex
 
-    Complex r;
+    Complex result;
 
-    r.Re =aLval* a.Re;
-    r.Im =aLval *a.Im;
+    result.Re =aLval * aRval.Re;
+    result.Im =aLval * aRval.Im;
 
-    return r;
+    return result;
 }
