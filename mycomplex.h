@@ -1,3 +1,8 @@
+/*!
+	@file
+	@brief Заголовочный файл класса Complex
+*/
+
 #ifndef _MY_COMPLEX_H_
 #define _MY_COMPLEX_H_
 
@@ -5,56 +10,62 @@
 
 using namespace std;
 
-class Complex  //управляющая конструкция (class)
+/*!
+	@brief Класс комплексного числа
+*/
+class Complex
 {
-    double Re; //вещественная часть комплексного числа
-	double Im; //мнимая часть комплексного числа
+	/*!
+		@brief Действительная составляющая
+	*/
+	double Re;
+	/*!
+		@brief Мнимая составляющая
+	*/
+	double Im;
+public:
 
-	public:
+	Complex(double aRe = 0, double aIm = 0); //контруктор создания объекта
+	Complex(const Complex&);             //контруктор копирования
+	~Complex();                          //деструктор
 
-    Complex(double aRe=0, double aIm=0); //контруктор создания объекта
-    Complex(const Complex&);             //контруктор копирования
+	void Set(double aRe, double aIm = 0);
+	operator double();
+	double abs();
 
-    ~Complex();                          //деструктор
+	//переопределение операторов сдвига в IO поток
+	friend istream& operator>> (istream&, Complex&);
+	friend ostream& operator<< (ostream&, Complex&);
 
-    void Set(double aRe, double aIm=0);
+	//переопределение оперататоров сложения
+	Complex operator+ (const Complex&);
+	Complex operator+ (const double&);
+	friend Complex operator+ (const double&, const Complex&);
 
-    operator double();
-    double abs();
+	//переопределение оперататоров вычитания
+	Complex operator- (const Complex&);
+	Complex operator- (const double&);
+	friend Complex operator- (const double&, const Complex&);
 
-    //переопределение операторов сдвига в IO поток
-    friend istream& operator>> (istream&, Complex&);
-    friend ostream& operator<< (ostream&, Complex&);
+	//переопределение оперататоров умножения
+	Complex operator* (const Complex&);
+	Complex operator* (const double&);
+	friend Complex operator* (const double&, const Complex&);
 
-    //переопределение оперататоров сложения
-    Complex operator+ (const Complex&);
-    Complex operator+ (const double&);
-    friend Complex operator+ (const double&, const Complex&);
+	//переопределение оперататоров деления
+	Complex operator/ (const double&);
 
-    //переопределение оперататоров вычитания
-    Complex operator- (const Complex&);
-    Complex operator- (const double&);
-    friend Complex operator- (const double&, const Complex&);
+	//переопределение операторов присваивания комплексных чисел
+	Complex& operator += (const Complex&);
+	Complex& operator -= (const Complex&);
+	Complex& operator *= (const Complex&);
+	Complex& operator =  (const Complex&);
 
-    //переопределение оперататоров умножения
-    Complex operator* (const Complex&);
-    Complex operator* (const double&);
-    friend Complex operator* (const double&, const Complex&);
-
-    //переопределение оперататоров деления
-    Complex operator/ (const double&);
-
-    //переопределение операторов присваивания комплексных чисел
-    Complex& operator += (const Complex&);
-    Complex& operator -= (const Complex&);
-    Complex& operator *= (const Complex&);
-    Complex& operator =  (const Complex&);
-
-    //переопределение операторов присваивания вещественных чисел
-    Complex& operator += (const double&);
-    Complex& operator -= (const double&);
-    Complex& operator *= (const double&);
-    Complex& operator /= (const double&);
-    Complex& operator =  (const double&);
+	//переопределение операторов присваивания вещественных чисел
+	Complex& operator += (const double&);
+	Complex& operator -= (const double&);
+	Complex& operator *= (const double&);
+	Complex& operator /= (const double&);
+	Complex& operator =  (const double&);
 };
 #endif
